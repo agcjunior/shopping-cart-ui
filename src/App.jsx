@@ -10,11 +10,11 @@ const App = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch("http://localhost:8000/products");
+        const response = await fetch("/api/products");
         if (!response.ok) {
           throw new Error("Network response was not ok");
         }
-        const data = await response.json();        
+        const data = await response.json();
         setProducts(data);
       } catch (error) {
         setError(error.message);
@@ -33,8 +33,7 @@ const App = () => {
       {loading && <p>Loading products...</p>}
       {error && <p className="error">{error}</p>}
 
-      <ProductList products={products} />       
-       
+      <ProductList products={products} />
     </div>
   );
 };
